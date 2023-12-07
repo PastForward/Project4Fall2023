@@ -17,6 +17,13 @@ public class HouseGraph extends LinkedGraph
     private final Location stairs = new Location("Stairs");
     private final Location upstairsHallway = new Location("Upstairs Stairs Hallway");
     
+    // 5 added rooms
+    private final Location upstairsMasterBedroom = new Location("Upstairs Master Bedroom");
+    private final Location upstairsMasterBathroom = new Location("Upstairs Master Bathroom");
+    private final Location upstairsBedroom = new Location("Upstairs Bedroom");
+    private final Location upstairsBathroom = new Location ("Upstairs Bathroom");
+    
+    
     // establish the "home" (a.k.a. "starting") location
     private final Location homeLocation = frontFoyer;
     
@@ -37,6 +44,11 @@ public class HouseGraph extends LinkedGraph
         addVertex(stairs);
         addVertex(upstairsHallway);
         // you add 5 more rooms
+        
+        addVertex(upstairsMasterBedroom);
+        addVertex(upstairsMasterBathroom);
+        addVertex(upstairsBedroom);
+        addVertex(upstairsBathroom);
         
         // Add each edge (this undirected Graph has 7 edges,
         //                  so we add 14 edges)
@@ -67,6 +79,19 @@ public class HouseGraph extends LinkedGraph
         
         addEdge(stairs, upstairsHallway);
         addEdge(upstairsHallway, stairs);
+        
+        // connect newly created locations
+        addEdge(upstairsHallway, upstairsMasterBedroom);
+        addEdge(upstairsMasterBedroom, upstairsHallway);
+        
+        addEdge(upstairsMasterBedroom, upstairsMasterBathroom);
+        addEdge(upstairsMasterBathroom, upstairsMasterBedroom);
+        
+        addEdge(upstairsHallway, upstairsBedroom);
+        addEdge(upstairsBedroom, upstairsHallway);
+        
+        addEdge(upstairsHallway, upstairsBathroom);
+        addEdge(upstairsBathroom, upstairsHallway);
     }
     
     /**

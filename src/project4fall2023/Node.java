@@ -10,7 +10,7 @@ package project4fall2023;
  * @author Aron Kabai-Tokes
  * @param <E>   the element data
  */
-public class Node<E> {
+public class Node<E extends Comparable<E>> {
     private E data;
     private Node<E> next;
     

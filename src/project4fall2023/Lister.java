@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
  *
  * @author Stephen T. Brower<stephen.brower@raritanval.edu>
  */
-public class Lister<E> implements Iterator<E> 
+public class Lister<E extends Comparable<E>> implements Iterator<E> 
 {
     private Node<E> cursor;
     
@@ -25,6 +25,7 @@ public class Lister<E> implements Iterator<E>
      * meaning does cursor point to a Node?
      * @return a boolean that indicates if cursor is pointing to a Node
      */
+    @Override
     public boolean hasNext()
     {
         return cursor != null;
@@ -34,6 +35,7 @@ public class Lister<E> implements Iterator<E>
      * next method returns data from the Node<E> and advances cursor
      * @return data from the Node<E>
      */
+    @Override
     public E next()
     {
         E answer;
@@ -45,7 +47,7 @@ public class Lister<E> implements Iterator<E>
         answer = cursor.getData();
         
         // advance cursor
-        cursor = cursor.getLink();
+        cursor = cursor.getNext();
         
         return answer;
     }
@@ -53,6 +55,7 @@ public class Lister<E> implements Iterator<E>
     /**
      * remove method is not implemented
      */
+    @Override
     public void remove()
     {
         throw new UnsupportedOperationException("Lister has no remove method");
